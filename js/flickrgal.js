@@ -385,15 +385,6 @@ function insert_albums(data, id){
 function insert_images(id){
 	gallery.imageGrid.innerHTML = "";
 
-	var navigateBack = new Element('image');
-			navigateBack.inner.classList.remove('inner');
-			navigateBack.inner.classList.add('navigate-back');
-			navigateBack.inner.innerHTML = '<div>Back</div>';
-			navigateBack.inner.addEventListener('click', handle_click);
-			navigateBack.el.appendChild(navigateBack.dummy);
-			navigateBack.el.appendChild(navigateBack.inner);
-			gallery.imageGrid.appendChild(navigateBack.el);
-
 	var position = get_album_pos(id);
 	var images = FlickrGal.albums[position].images
 	var size = 'z';
@@ -414,6 +405,15 @@ function insert_images(id){
 		// Append image and fade it in
 		fade_in_image(imageID, imageUrl);
 	});
+    
+    var navigateBack = new Element('image');
+        navigateBack.inner.classList.remove('inner');
+        navigateBack.inner.classList.add('navigate-back');
+        navigateBack.inner.innerHTML = '<div>Back</div>';
+        navigateBack.inner.addEventListener('click', handle_click);
+        navigateBack.el.appendChild(navigateBack.dummy);
+        navigateBack.el.appendChild(navigateBack.inner);
+        gallery.imageGrid.appendChild(navigateBack.el);
 }
 function insert_lightbox(id, album){
 	FlickrGal.lightboxSet = [];

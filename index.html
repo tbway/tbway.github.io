@@ -54,9 +54,9 @@
             
             var
             // Obtain a reference to the canvas element using its id.
-            htmlCanvas = document.getElementById('myCanvas'),
+            canvas = document.getElementById('myCanvas'),
             // Obtain a graphics context on the canvas element for drawing.
-            ctx = htmlCanvas.getContext('2d');
+            ctx = canvas.getContext('2d');
 
             function initialize() {
                 // Register an event listener to call the resizeCanvas() function 
@@ -73,7 +73,7 @@
 
             // Display custom canvas.
             function redraw() {
-                ctx.clearRect(0, 0, htmlCanvas.width, htmlCanvas.height);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.save();
                 ctx.globalAlpha = fadeVal
                 ctx.drawImage(img, previousX, previousY);
@@ -84,17 +84,19 @@
             // Resets the canvas dimensions to match window,
             // then draws the new borders accordingly.
             function resizeCanvas() {
-                htmlCanvas.width = window.innerWidth - 0;
-                htmlCanvas.height = window.innerHeight - 0;
+                canvas.width = window.innerWidth - 0;
+                canvas.height = window.innerHeight - 0;
                 redraw();
             }
             
             function move() {
-                ctx.clearRect(0, 0, htmlCanvas.width, htmlCanvas.height);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.save();
                 ctx.globalAlpha = fadeVal
-                var offsetX = Math.floor((Math.random() * htmlCanvas.width-(2*deadZone)) + deadZone);
-                var offsetY = Math.floor((Math.random() * htmlCanvas.height-(2*deadZone)) + deadZone);
+                var offsetX = Math.floor((Math.random() * canvas.width-(2*deadZone)) + deadZone);
+                var offsetY = Math.floor((Math.random() * canvas.height-(2*deadZone)) + deadZone);
+                offsetX = 100
+                offsetY = 100
                 ctx.drawImage(img, offsetX, offsetY);
                 ctx.restore();
                 previousX = offsetX;
@@ -112,7 +114,7 @@
                     fadeCount = fadeCountMax;
                     fadeDirection ^= 1;
                 }
-                ctx.clearRect(0, 0, htmlCanvas.width, htmlCanvas.height);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 if (fadeCount == fadeCountMax && fadeDirection == 1) {
                     newCycle = 1
                     // skip draw, meaning completely transparent
@@ -129,9 +131,23 @@
                 if (newCycle) move()
                 fade()
             }
+            
+            function clicked() {
+                window.location.href = 'home.html'
+            }
                        
             window.onload = function() {
                 initialize();
+            }
+            
+            canvas.onmousedown = function(e){
+                if (e.x > previousX && 
+                    e.x < (previousX + imgWidth) &&
+                    e.y > previousY &&
+                    e.y < (previousY + imgHeight))
+                {
+                    clicked()
+                }
             }
         </script>
     </body>

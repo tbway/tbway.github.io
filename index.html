@@ -68,7 +68,7 @@
             var previousX = 0
             var previousY = 0
             var fadeDirection = 1
-            var fadeCountMax = 25
+            var fadeCountMax = 13
             var fadeCount = fadeCountMax
             var fadeVal = 0
             var newCycle = 1
@@ -90,7 +90,7 @@
                 deadZone = imgWidth/2;
                 
                 // timer to use for animation
-                setInterval(function(){ update(); }, 20);
+                setInterval(function(){ update(); }, 40);
             }
 
             // Display custom canvas.
@@ -134,7 +134,7 @@
                     fadeCount = fadeCountMax;
                     fadeDirection ^= 1;
                 }
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.clearRect(previousX, previousY, imgWidth, imgHeight);
                 if (fadeCount == fadeCountMax && fadeDirection == 1) {
                     newCycle = 1
                     // skip draw, meaning completely transparent

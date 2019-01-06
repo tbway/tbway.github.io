@@ -49,7 +49,19 @@
       #flickrgal #image-grid .album .dummy {
         margin-top: 75%; }
       #flickrgal #image-grid .image .navigate-back,
-      #flickrgal #image-grid .image .inner,
+      #flickrgal #image-grid .image .inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000;
+        opacity: 0;
+        box-sizing: border-box;
+        -webkit-transition: all 0.2s ease-out;
+        -moz-transition: all 0.2s ease-out;
+        -o-transition: all 0.2s ease-out;
+        transition: all 0.2s ease-out; }
       #flickrgal #image-grid .album .navigate-back,
       #flickrgal #image-grid .album .inner {
         position: absolute;
@@ -65,7 +77,8 @@
         -o-transition: all 0.2s ease-out;
         transition: all 0.2s ease-out; }
         #flickrgal #image-grid .image .navigate-back:hover,
-        #flickrgal #image-grid .image .inner:hover,
+        #flickrgal #image-grid .image .inner:hover {
+          opacity: 0.5; }
         #flickrgal #image-grid .album .navigate-back:hover,
         #flickrgal #image-grid .album .inner:hover {
           opacity: 0.75; }

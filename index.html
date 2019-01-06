@@ -30,18 +30,14 @@
             var img = document.getElementById("squeeze");
             var previousX = 0
             var previousY = 0
-                            
-            window.onload = function() {
-              
+            
             var
             // Obtain a reference to the canvas element using its id.
             htmlCanvas = document.getElementById('myCanvas'),
             // Obtain a graphics context on the canvas element for drawing.
             ctx = htmlCanvas.getContext('2d');
 
-            initialize();
-
-           function initialize() {
+            function initialize() {
                // Register an event listener to call the resizeCanvas() function 
                // each time the window is resized.
                window.addEventListener('resize', resizeCanvas, false);
@@ -54,9 +50,7 @@
             function redraw() {
               //img = document.getElementById("squeeze");
               //img.AddMouseDownEvent(polygonMouseDown);
-              ctx.drawImage(img, 10, 10);
-              previousX = 10;
-              previousY = 10;
+              ctx.drawImage(img, previousX, previousY);
             }
 
             // Runs each time the DOM window resize event fires.
@@ -67,22 +61,25 @@
                 htmlCanvas.height = window.innerHeight - 20;
                 redraw();
             }
-                
-//                window.onload = function() {
-//                   // Start listening to resize events and draw canvas.
-//                   initialize();
-//                }
+            
+            function move() {
+                ctx.clearRect(0, 0, htmlCanvas.width, htmlCanvas.height);
+                ctx.drawImage(img, previousX + 5, previousY + 5);
+                previousX += 5;
+                previousY += 5;
             }
             
             function dostuff() {
-                var
+                //var
                 // Obtain a reference to the canvas element using its id.
-                htmlCanvas = document.getElementById('myCanvas'),
+                //htmlCanvas = document.getElementById('myCanvas'),
                 // Obtain a graphics context on the canvas element for drawing.
-                ctx = htmlCanvas.getContext('2d');
-                
-                ctx.clearRect(0, 0, htmlCanvas.width, htmlCanvas.height);
-                ctx.drawImage(img, 50, 50);
+                //ctx = htmlCanvas.getContext('2d');
+                move()
+            }
+                       
+            window.onload = function() {
+                initialize();
             }
         </script>
     </body>

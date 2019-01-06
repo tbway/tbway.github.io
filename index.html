@@ -95,8 +95,6 @@
                 ctx.globalAlpha = fadeVal
                 var offsetX = Math.floor((Math.random() * canvas.width-(2*deadZone)) + deadZone);
                 var offsetY = Math.floor((Math.random() * canvas.height-(2*deadZone)) + deadZone);
-                offsetX = 100
-                offsetY = 100
                 ctx.drawImage(img, offsetX, offsetY);
                 ctx.restore();
                 previousX = offsetX;

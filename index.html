@@ -25,15 +25,12 @@
     <body width="100%" height="100%">
         <div id="enterText">
             <a href="#">Click the squeezer to enter!</a>
-            <!--br><button onclick="update()">DO STUFF</button-->
         </div>
         <img id="squeeze" style="visibility:hidden" src="images/faceon.png" alt="The Squeeze">
 
         <canvas id="myCanvas" style="position:absolute; left:0px; top:00px; border:0px solid #d3d3d3;"/>
 
         <script>
-            //var img = document.getElementById("squeeze");
-            
             var imgWidth
             var imgHeight
             var img = new Image();
@@ -74,11 +71,8 @@
                 setInterval(function(){ update(); }, 20);
             }
 
-            // Display custom canvas. In this case it's a blue, 5 pixel 
-            // border that resizes along with the browser window.
+            // Display custom canvas.
             function redraw() {
-                //img = document.getElementById("squeeze");
-                //img.AddMouseDownEvent(polygonMouseDown);
                 ctx.clearRect(0, 0, htmlCanvas.width, htmlCanvas.height);
                 ctx.save();
                 ctx.globalAlpha = fadeVal
@@ -132,11 +126,6 @@
             }
             
             function update() {
-                //var
-                // Obtain a reference to the canvas element using its id.
-                //htmlCanvas = document.getElementById('myCanvas'),
-                // Obtain a graphics context on the canvas element for drawing.
-                //ctx = htmlCanvas.getContext('2d');
                 if (newCycle) move()
                 fade()
             }

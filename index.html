@@ -1,5 +1,7 @@
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
         <title>Theadora Ballantyne-Way</title>
         <style>
             html, body {
@@ -14,22 +16,44 @@
 
             #enterText {
                 position: absolute;
-                #top: 50%;
+                top: 50%;
                 text-align: center;
                 width: 100%;
             }
         </style>
     </head>
     <body width="100%" height="100%">
-        <div id="enterText"><a href="#">Click the squeezer to enter!</a><br><button onclick="dostuff()">DO STUFF</button></div>
+        <div id="enterText">
+            <a href="#">Click the squeezer to enter!</a>
+            <!--br><button onclick="update()">DO STUFF</button-->
+        </div>
         <img id="squeeze" style="visibility:hidden" src="images/faceon.png" alt="The Squeeze">
 
-        <canvas id="myCanvas" style="position:absolute; left:0px; top:50px; border:10px solid #d3d3d3;"/>
+        <canvas id="myCanvas" style="position:absolute; left:0px; top:00px; border:0px solid #d3d3d3;"/>
 
         <script>
-            var img = document.getElementById("squeeze");
+            //var img = document.getElementById("squeeze");
+            
+            var imgWidth
+            var imgHeight
+            var img = new Image();
+
+            img.addEventListener('load', function() {
+              // once the image is loaded:
+              imgWidth = img.naturalWidth; // this will be 300
+              imgHeight = img.naturalHeight; // this will be 400
+            }, false);
+
+            img.src = 'images/faceon.png';
+      
             var previousX = 0
             var previousY = 0
+            var fadeDirection = 1
+            var fadeCountMax = 50
+            var fadeCount = fadeCountMax
+            var fadeVal = 0
+            var newCycle = 1
+            var deadZone
             
             var
             // Obtain a reference to the canvas element using its id.
@@ -38,44 +62,83 @@
             ctx = htmlCanvas.getContext('2d');
 
             function initialize() {
-               // Register an event listener to call the resizeCanvas() function 
-               // each time the window is resized.
-               window.addEventListener('resize', resizeCanvas, false);
-               // Draw canvas border for the first time.
-               resizeCanvas();
+                // Register an event listener to call the resizeCanvas() function 
+                // each time the window is resized.
+                window.addEventListener('resize', resizeCanvas, false);
+                // Draw canvas border for the first time.
+                resizeCanvas();
+
+                deadZone = imgWidth/2;
+                
+                // timer to use for animation
+                setInterval(function(){ update(); }, 20);
             }
 
             // Display custom canvas. In this case it's a blue, 5 pixel 
             // border that resizes along with the browser window.
             function redraw() {
-              //img = document.getElementById("squeeze");
-              //img.AddMouseDownEvent(polygonMouseDown);
-              ctx.drawImage(img, previousX, previousY);
+                //img = document.getElementById("squeeze");
+                //img.AddMouseDownEvent(polygonMouseDown);
+                ctx.clearRect(0, 0, htmlCanvas.width, htmlCanvas.height);
+                ctx.save();
+                ctx.globalAlpha = fadeVal
+                ctx.drawImage(img, previousX, previousY);
+                ctx.restore();
             }
 
             // Runs each time the DOM window resize event fires.
             // Resets the canvas dimensions to match window,
             // then draws the new borders accordingly.
             function resizeCanvas() {
-                htmlCanvas.width = window.innerWidth - 20;
-                htmlCanvas.height = window.innerHeight - 20;
+                htmlCanvas.width = window.innerWidth - 0;
+                htmlCanvas.height = window.innerHeight - 0;
                 redraw();
             }
             
             function move() {
                 ctx.clearRect(0, 0, htmlCanvas.width, htmlCanvas.height);
-                ctx.drawImage(img, previousX + 5, previousY + 5);
-                previousX += 5;
-                previousY += 5;
+                ctx.save();
+                ctx.globalAlpha = fadeVal
+                var offsetX = Math.floor((Math.random() * htmlCanvas.width-(2*deadZone)) + deadZone);
+                var offsetY = Math.floor((Math.random() * htmlCanvas.height-(2*deadZone)) + deadZone);
+                ctx.drawImage(img, offsetX, offsetY);
+                ctx.restore();
+                previousX = offsetX;
+                previousY = offsetY;
             }
             
-            function dostuff() {
+            function fade() {
+                if (fadeDirection == 0) {
+                    fadeVal -= 1/fadeCountMax;
+                } else {
+                    fadeVal += 1/fadeCountMax;
+                }
+                fadeCount--;
+                if (fadeCount == 0) {
+                    fadeCount = fadeCountMax;
+                    fadeDirection ^= 1;
+                }
+                ctx.clearRect(0, 0, htmlCanvas.width, htmlCanvas.height);
+                if (fadeCount == fadeCountMax && fadeDirection == 1) {
+                    newCycle = 1
+                    // skip draw, meaning completely transparent
+                } else {
+                    newCycle = 0
+                    ctx.save();
+                    ctx.globalAlpha = fadeVal
+                    ctx.drawImage(img, previousX, previousY);
+                    ctx.restore();
+                }
+            }
+            
+            function update() {
                 //var
                 // Obtain a reference to the canvas element using its id.
                 //htmlCanvas = document.getElementById('myCanvas'),
                 // Obtain a graphics context on the canvas element for drawing.
                 //ctx = htmlCanvas.getContext('2d');
-                move()
+                if (newCycle) move()
+                fade()
             }
                        
             window.onload = function() {

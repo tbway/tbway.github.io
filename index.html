@@ -1,9 +1,9 @@
 <html>
     <head>
         <title>Theadora Ballantyne-Way</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <style>
             html, body {
+              top: 0%;
               width: 100%;
               height: 100%;
               margin: 0px;
@@ -14,56 +14,76 @@
 
             #enterText {
                 position: absolute;
-                top: 50%;
+                #top: 50%;
                 text-align: center;
                 width: 100%;
             }
         </style>
     </head>
     <body width="100%" height="100%">
-        <div id="enterText"><a href="home.html">Click the squeezer to enter!</a></div>
-        
+        <div id="enterText"><a href="#">Click the squeezer to enter!</a><br><button onclick="dostuff()">DO STUFF</button></div>
         <img id="squeeze" style="visibility:hidden" src="images/faceon.png" alt="The Squeeze">
-        
-        <canvas id="myCanvas" style="position:absolute; left:0px; top:0px; border:10px solid #d3d3d3;"/>
+
+        <canvas id="myCanvas" style="position:absolute; left:0px; top:50px; border:10px solid #d3d3d3;"/>
 
         <script>
-            (function() {
+            var img = document.getElementById("squeeze");
+            var previousX = 0
+            var previousY = 0
+                            
+            window.onload = function() {
+              
+            var
+            // Obtain a reference to the canvas element using its id.
+            htmlCanvas = document.getElementById('myCanvas'),
+            // Obtain a graphics context on the canvas element for drawing.
+            ctx = htmlCanvas.getContext('2d');
+
+            initialize();
+
+           function initialize() {
+               // Register an event listener to call the resizeCanvas() function 
+               // each time the window is resized.
+               window.addEventListener('resize', resizeCanvas, false);
+               // Draw canvas border for the first time.
+               resizeCanvas();
+            }
+
+            // Display custom canvas. In this case it's a blue, 5 pixel 
+            // border that resizes along with the browser window.
+            function redraw() {
+              //img = document.getElementById("squeeze");
+              //img.AddMouseDownEvent(polygonMouseDown);
+              ctx.drawImage(img, 10, 10);
+              previousX = 10;
+              previousY = 10;
+            }
+
+            // Runs each time the DOM window resize event fires.
+            // Resets the canvas dimensions to match window,
+            // then draws the new borders accordingly.
+            function resizeCanvas() {
+                htmlCanvas.width = window.innerWidth - 20;
+                htmlCanvas.height = window.innerHeight - 20;
+                redraw();
+            }
+                
+//                window.onload = function() {
+//                   // Start listening to resize events and draw canvas.
+//                   initialize();
+//                }
+            }
+            
+            function dostuff() {
                 var
                 // Obtain a reference to the canvas element using its id.
                 htmlCanvas = document.getElementById('myCanvas'),
                 // Obtain a graphics context on the canvas element for drawing.
-                context = htmlCanvas.getContext('2d');
-
-               function initialize() {
-                   // Register an event listener to call the resizeCanvas() function 
-                   // each time the window is resized.
-                   window.addEventListener('resize', resizeCanvas, false);
-                   // Draw canvas border for the first time.
-                   resizeCanvas();
-                }
-
-                // Display custom canvas. In this case it's a blue, 5 pixel 
-                // border that resizes along with the browser window.
-                function redraw() {
-                  var img = document.getElementById("squeeze");
-                  context.drawImage(img, 10, 10);
-                }
-
-                // Runs each time the DOM window resize event fires.
-                // Resets the canvas dimensions to match window,
-                // then draws the new borders accordingly.
-                function resizeCanvas() {
-                    htmlCanvas.width = window.innerWidth - 20;
-                    htmlCanvas.height = window.innerHeight - 20;
-                    redraw();
-                }
+                ctx = htmlCanvas.getContext('2d');
                 
-                window.onload = function() {
-                   // Start listening to resize events and draw canvas.
-                   initialize();
-                }
-            })();
+                ctx.clearRect(0, 0, htmlCanvas.width, htmlCanvas.height);
+                ctx.drawImage(img, 50, 50);
+            }
         </script>
     </body>
 </html>

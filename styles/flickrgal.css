@@ -58,7 +58,7 @@
         right: 0;
         bottom: 0;
         background: #000;
-        opacity: 0;
+        opacity: 0.5;
         box-sizing: border-box;
         -webkit-transition: all 0.2s ease-out;
         -moz-transition: all 0.2s ease-out;
@@ -68,7 +68,7 @@
         #flickrgal #image-grid .image .inner:hover,
         #flickrgal #image-grid .album .navigate-back:hover,
         #flickrgal #image-grid .album .inner:hover {
-          opacity: 0.5; }
+          opacity: 0.75; }
         #flickrgal #image-grid .image .navigate-back div,
         #flickrgal #image-grid .image .inner div,
         #flickrgal #image-grid .album .navigate-back div,

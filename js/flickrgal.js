@@ -425,19 +425,32 @@ function insert_lightbox(id, album){
 	Array.prototype.forEach.call(callingAlbum, function(image) {
 		var currentImage = document.getElementById(image.id);
 		var initialUrl = currentImage.style.backgroundImage;
-		var newImage = document.createElement('div');
+		var largeImageUrl = build_image_url(image, 'b');
+		var newImage = document.createElement('img');
 			newImage.id = 'stage-' + image.id;
 			newImage.classList.add('hide-stage-image');
-			//newImage.style.backgroundImage = initialUrl;
+			newImage.style.backgroundImage = initialUrl;
+			newImage.style.backgroundSize = 'contain';
+			newImage.style.maxHeight = '100%';
+			newImage.style.maxWidth = '100%';
+			newImage.style.position = 'absolute';
+			newImage.style.margin = 'auto';
+			newImage.style.top = 0;
+			newImage.style.right = 0;
+			newImage.style.bottom = 0;
+			newImage.style.left = 0;
 			newImage.setAttribute('data-title', image.title);
 			newImage.setAttribute('data-description', image.description._content);
+			newImage.setAttribute('src', largeImageUrl);
+			newImage.setAttribute('title', image.title);
+			newImage.setAttribute('alt', image.title);
 
 			// Append divs with large image inserts
-			var largeImageUrl = build_image_url(image, 'b')
+//			var largeImageUrl = build_image_url(image, 'b')
 //			newImage.innerHTML = '<div style="background-image: url('
 //				+ largeImageUrl
 //				+ ')"></div>';
-			newImage.innerHTML = '<img src="' + largeImageUrl + '" title="' + image.title + '" alt="' + image.title + '" style="max-height:100%; max-width:100%; position: absolute; margin: auto; top: 0; right: 0; bottom: 0;left: 0;">'
+//			newImage.innerHTML = '<img src="' + largeImageUrl + '" title="' + image.title + '" alt="' + image.title + '" style="max-height:100%; max-width:100%; position: absolute; margin: auto; top: 0; right: 0; bottom: 0;left: 0;">'
 
 			lightbox.image.appendChild(newImage);
 			FlickrGal.lightboxSet.push(newImage.id);

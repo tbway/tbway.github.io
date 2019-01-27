@@ -428,15 +428,16 @@ function insert_lightbox(id, album){
 		var newImage = document.createElement('div');
 			newImage.id = 'stage-' + image.id;
 			newImage.classList.add('hide-stage-image');
-			newImage.style.backgroundImage = initialUrl;
+			//newImage.style.backgroundImage = initialUrl;
 			newImage.setAttribute('data-title', image.title);
 			newImage.setAttribute('data-description', image.description._content);
 
 			// Append divs with large image inserts
 			var largeImageUrl = build_image_url(image, 'b')
-			newImage.innerHTML = '<div style="background-image: url('
-				+ largeImageUrl
-				+ ')"></div>';
+//			newImage.innerHTML = '<div style="background-image: url('
+//				+ largeImageUrl
+//				+ ')"></div>';
+			newImage.innerHTML = '<img src="' + largeImageUrl + '" title="' + image.title + '" alt="' + image.title + '" style="max-height:100%; max-width:100%; position: absolute; margin: auto; top: 0; right: 0; bottom: 0;left: 0;">'
 
 			lightbox.image.appendChild(newImage);
 			FlickrGal.lightboxSet.push(newImage.id);

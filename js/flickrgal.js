@@ -372,12 +372,12 @@ function insert_albums(data, id){
 
 		// Set album cover image
 		if (imageObject.is_primary == 1) {
-			primaryImageUrl = build_image_url(imageObject, 'z');
+			primaryImageUrl = build_image_url(imageObject, 'n');
 			// Append image and fade it in
 			fade_in_image(id, primaryImageUrl);
 		}else{
 			// Fallback to set the primary photo to the first photo returned in the album is isprimary is not set
-			primaryImageUrl = build_image_url(FlickrGal.albums[position].images[0], 'z');
+			primaryImageUrl = build_image_url(FlickrGal.albums[position].images[0], 'n');
 			fade_in_image(id, primaryImageUrl);
 		}
 	});
@@ -390,7 +390,7 @@ function insert_images(id){
 	var size = 'z';
 
 	Array.prototype.forEach.call(images, function(image) {
-		var imageUrl = build_image_url(image, 'z');
+		var imageUrl = build_image_url(image, 'n');
 		var newImage = new Element('image');
 		var imageID = image.id;
 

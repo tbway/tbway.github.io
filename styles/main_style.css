@@ -54,7 +54,7 @@
  .nav { display: table-cell; vertical-align: middle; }
  .nav ul { float: right; max-width: calc(100vw - 480px); overflow: hidden; }
  .nav li { display: inline-block; margin: 5px 5px 5px 0; }
- .nav .wsite-menu-item { display: block; padding: 12px 20px; border: 1px solid transparent; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 500; line-height: 1; letter-spacing: 0.05em; text-transform: uppercase; -webkit-transition: opacity 300ms ease; -moz-transition: opacity 300ms ease; -ms-transition: opacity 300ms ease; transition: opacity 300ms ease; }
+ .nav .wsite-menu-item { display: block; padding: 12px 20px; border: 1px solid transparent; font-family: 'Montserrat', sans-serif; font-size: 19px; font-weight: 500; line-height: 1; letter-spacing: 0.05em; text-transform: uppercase; -webkit-transition: opacity 300ms ease; -moz-transition: opacity 300ms ease; -ms-transition: opacity 300ms ease; transition: opacity 300ms ease; }
  .nav li:not(.wsite-nav-cart)#active > .wsite-menu-item { border-color: inherit; }
  .nav li .wsite-menu-item:hover { opacity: 0.6; }
  .nav #wsite-nav-cart-a { padding-right: 0; }

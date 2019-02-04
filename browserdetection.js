@@ -84,9 +84,32 @@ function supportsH264_2() {
  }
 }
 
-function supportsVideoTags() {
+function supportVideoTypeFull(type) {
+  let video;
+  var can;
+  
+  if (!video) {
+    video = document.createElement('video')
+  }
+  
+  can = video.canPlayType(type);
+  document.write('video support for ' + type + ' = ' + can + '<br>');
+  
+  return can;
+}
+
+
+function supportsVideoTag() {
    // look here
    // https://stackoverflow.com/questions/3570502/how-to-check-for-html5-video-support
+   let video;
+
+  if (!video) {
+    video = document.createElement('video')
+  }
+  if (!video) return false;
+  if (!video.canPlayType) return false;
+  return true;
 }
 
 
@@ -151,13 +174,17 @@ else if (isIE()) {
  browserName = "Microsoft Internet Explorer";
  fullVersion = getInternetExplorerVersion()
 }
-// trim the fullVersion string at semicolon/space if present
-//if ((ix=fullVersion.indexOf(';'))!=-1) fullVersion=fullVersion.substring(0,ix);
-//if ((ix=fullVersion.indexOf(' '))!=-1) fullVersion=fullVersion.substring(0,ix);
+
+if (!isIE()) {
+  // trim the fullVersion string at semicolon/space if present
+  if ((ix=fullVersion.indexOf(';'))!=-1) fullVersion=fullVersion.substring(0,ix);
+  if ((ix=fullVersion.indexOf(' '))!=-1) fullVersion=fullVersion.substring(0,ix);
+}
 
 majorVersion = parseInt(''+fullVersion,10);
 if (isNaN(majorVersion)) {
  fullVersion  = ''+parseFloat(navigator.appVersion); 
  majorVersion = parseInt(navigator.appVersion,10);
 }
+
 

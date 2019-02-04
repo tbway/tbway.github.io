@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
 <title>Client detection</title>
 <NOSCRIPT>
 <H3>This page uses JavaScript</H3> 
@@ -44,12 +46,43 @@ if(self.browserName) document.write(''
  +'Full version  = '+fullVersion+'<br>'
  +'Major version = '+majorVersion+'<br>'
  +'navigator.appName = '+navigator.appName+'<br>'
+ +'navigator.appVersion = '+navigator.appVersion+'<br>'
  +'navigator.userAgent = '+navigator.userAgent+'<br>'
  +'Canvas support = '+isCanvasSupported()+'<br>'
  +'getUserMedia support = '+isGetUserMediaSupported()+'<br>'
+ +'video element support = '+supportsVideoTag()+'<br>'
  +'h264 format 1 = '+supportsH264_1()+'<br>'
  +'h264 format 2 = '+supportsH264_2()+'<br>'
+ 
 )
+
+supportVideoTypeFull('video/mp4; codecs="avc1.42E01E, mp4a.40.5"')
+supportVideoTypeFull('video/mp4; codecs="avc1.42E01E, mp4a.40.2"')
+supportVideoTypeFull('video/mp4; codecs="avc1.42E01E, mp4a.69"')
+supportVideoTypeFull('video/mp4; codecs="avc1.42E01E, mp4a.6B"')
+supportVideoTypeFull('video/mp4; codecs="avc1.42E01F, mp4a.40.5"')
+supportVideoTypeFull('video/mp4; codecs="avc1.42E01F, mp4a.40.2"')
+supportVideoTypeFull('video/mp4; codecs="avc1.42E01F, mp4a.69"')
+supportVideoTypeFull('video/mp4; codecs="avc1.42E01F, mp4a.6B"')
+supportVideoTypeFull('video/mp4; codecs="avc1.4D401F, mp4a.40.5"')
+supportVideoTypeFull('video/mp4; codecs="avc1.4D401F, mp4a.40.2"')
+supportVideoTypeFull('video/mp4; codecs="avc1.4D401F, mp4a.69"')
+supportVideoTypeFull('video/mp4; codecs="avc1.4D401F, mp4a.6B"')
+supportVideoTypeFull('video/mp4; codecs="avc1.4D4028, mp4a.40.5"')
+supportVideoTypeFull('video/mp4; codecs="avc1.4D4028, mp4a.40.2"')
+supportVideoTypeFull('video/mp4; codecs="avc1.4D4028, mp4a.69"')
+supportVideoTypeFull('video/mp4; codecs="avc1.4D4028, mp4a.6B"')
+supportVideoTypeFull('video/mp4; codecs="avc1.640028, mp4a.40.5"')
+supportVideoTypeFull('video/mp4; codecs="avc1.640028, mp4a.40.2"')
+supportVideoTypeFull('video/mp4; codecs="avc1.640028, mp4a.69"')
+supportVideoTypeFull('video/mp4; codecs="avc1.640028, mp4a.6B"')
+supportVideoTypeFull('video/mp4; codecs="avc1.640029, mp4a.40.5"')
+supportVideoTypeFull('video/mp4; codecs="avc1.640029, mp4a.40.2"')
+supportVideoTypeFull('video/mp4; codecs="avc1.640029, mp4a.69"')
+supportVideoTypeFull('video/mp4; codecs="avc1.640029, mp4a.6B"')
+supportVideoTypeFull('video/mp4; codecs="avc1.4D401E, mp4a.40.2"')
+
+
 //-->
 </script>
 </body>

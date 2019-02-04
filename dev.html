@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <title>Client detection</title>
@@ -8,10 +9,14 @@
 <li>Make sure that JavaScript is enabled.
 </ul>
 </NOSCRIPT>
-</head>
+
 <script type="text/javascript" language=JavaScript src="browserdetection.js">
 </script>
+
+</head>
 <body>
+<canvas>Your browser doesn't support "canvas".</canvas>
+
 <p>Info about the client:</p>
 <script language="JavaScript">
 
@@ -40,6 +45,10 @@ if(self.browserName) document.write(''
  +'Major version = '+majorVersion+'<br>'
  +'navigator.appName = '+navigator.appName+'<br>'
  +'navigator.userAgent = '+navigator.userAgent+'<br>'
+ +'Canvas support = '+isCanvasSupported()+'<br>'
+ +'getUserMedia support = '+isGetUserMediaSupported()+'<br>'
+ +'h264 format 1 = '+supportsH264_1()+'<br>'
+ +'h264 format 2 = '+supportsH264_2()+'<br>'
 )
 //-->
 </script>

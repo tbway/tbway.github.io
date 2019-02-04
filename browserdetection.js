@@ -27,7 +27,68 @@ function getInternetExplorerVersion()
   return rv;
 }
 
-console.log('IE version:', getInternetExplorerVersion());
+function isCanvasSupported(){
+  var elem = document.createElement('canvas');
+  return !!(elem.getContext && elem.getContext('2d'));
+}
+
+function isGetUserMediaSupported(){
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function supportsVideoType(type) {
+  let video;
+
+  // Allow user to create shortcuts, i.e. just "webm"
+  let formats = {
+    ogg: 'video/ogg; codecs="theora"',
+    h264_1: 'video/mp4; codecs="avc1.42E01E"',
+    h264_2: 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+    webm: 'video/webm; codecs="vp8, vorbis"',
+    vp9: 'video/webm; codecs="vp9"',
+    hls: 'application/x-mpegURL; codecs="avc1.42E01E"',
+    mp4: 'video/mp4; codecs="mp4v.20.8"'
+  };
+
+  if(!video) {
+    video = document.createElement('video')
+  }
+
+  return video.canPlayType(formats[type] || type);
+}
+
+// Usage
+function supportsH264_1() {
+ if(supportsVideoType('h264_1') === "probably") {
+   // Set the video to webm
+   return true;
+ }
+ else {
+   // Set the video to mpeg or mp4
+   return false;
+ }
+}
+
+function supportsH264_2() {
+ if(supportsVideoType('h264_2') === "probably") {
+   // Set the video to webm
+   return true;
+ }
+ else {
+   // Set the video to mpeg or mp4
+   return false;
+ }
+}
+
+function supportsVideoTags() {
+   // look here
+   // https://stackoverflow.com/questions/3570502/how-to-check-for-html5-video-support
+}
+
 
 // In Opera 15+, the true version is after "OPR/" 
 if ((verOffseisIEt=nAgt.indexOf("Edge/"))!=-1) {
@@ -91,8 +152,8 @@ else if (isIE()) {
  fullVersion = getInternetExplorerVersion()
 }
 // trim the fullVersion string at semicolon/space if present
-if ((ix=fullVersion.indexOf(';'))!=-1) fullVersion=fullVersion.substring(0,ix);
-if ((ix=fullVersion.indexOf(' '))!=-1) fullVersion=fullVersion.substring(0,ix);
+//if ((ix=fullVersion.indexOf(';'))!=-1) fullVersion=fullVersion.substring(0,ix);
+//if ((ix=fullVersion.indexOf(' '))!=-1) fullVersion=fullVersion.substring(0,ix);
 
 majorVersion = parseInt(''+fullVersion,10);
 if (isNaN(majorVersion)) {

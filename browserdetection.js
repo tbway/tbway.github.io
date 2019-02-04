@@ -47,7 +47,7 @@ function supportsVideoType(type) {
   let formats = {
     ogg: 'video/ogg; codecs="theora"',
     h264_1: 'video/mp4; codecs="avc1.42E01E"',
-    h264_2: 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+    h264_2: 'video/mp4; codecs="avc1.42401F"',
     webm: 'video/webm; codecs="vp8, vorbis"',
     vp9: 'video/webm; codecs="vp9"',
     hls: 'application/x-mpegURL; codecs="avc1.42E01E"',

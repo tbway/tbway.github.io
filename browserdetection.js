@@ -188,3 +188,53 @@ if (isNaN(majorVersion)) {
 }
 
 
+
+
+  function checkFormats() {
+    var videoElement = document.createElement('video');
+
+    var setCompatibility = function(id, isCompatible) {
+      var el = document.getElementById(id);
+      el.className = el.className.replace(
+          /\bunknown\b/, isCompatible ? 'success' : 'error');
+    };
+
+    var videoCompatible = videoElement && videoElement.canPlayType;
+    setCompatibility('c-video', videoCompatible);
+    if (!videoCompatible) {
+      var join = document.getElementById('html5-join-link');
+      join.className = 'hid';
+      var unsupported = document.getElementById('html5-unsupported');
+      unsupported.className =
+          unsupported.className = cVideo.className.replace(/\bhid\b/, '');
+    }
+
+    setCompatibility('c-h264',
+      videoElement && videoElement.canPlayType &&
+      videoElement.canPlayType('video/mp4; codecs="avc1.42001E, mp4a.40.2"'));
+
+    setCompatibility('c-webm',
+      videoElement && videoElement.canPlayType &&
+      videoElement.canPlayType('video/webm; codecs="vp8.0, vorbis"'));
+
+    var mse = window['MediaSource'] || window['WebKitMediaSource'];
+    setCompatibility('c-mse', !!mse);
+    var checkMSECompatibility = function(mimeType) {
+      if (mse && !mse.isTypeSupported) {
+        // When async type detection is required, fall back to canPlayType.
+        return videoElement.canPlayType(mimeType);
+      } else {
+        return mse && mse.isTypeSupported(mimeType);
+      }
+    };
+
+    setCompatibility('c-mse-h264',
+        checkMSECompatibility('video/mp4; codecs="avc1.4d401e"'));
+    setCompatibility('c-mse-webm',
+        checkMSECompatibility('video/webm; codecs="vp9"'));
+  }
+
+  function submitForm() {
+    document.getElementById('html5form').submit();
+    return false;
+  }

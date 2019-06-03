@@ -11196,9 +11196,8 @@ section {
 audio,
 canvas,
 video {
-    display: inline-block;
-    *display: inline;
-    *zoom: 1
+  max-width: 100%;
+  height: auto;
 }
 
 audio:not([controls]) {

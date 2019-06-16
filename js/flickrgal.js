@@ -1,5 +1,10 @@
 if (typeof window !== 'undefined') window.addEventListener("load", function(event) {
-	FlickrGal.init();
+    var searchTerm
+    if (window.location.search) {
+        searchTerm = window.location.search.slice(1);
+        console.log("searchTerm: " + searchTerm);
+    }
+    FlickrGal.init(searchTerm);
 });
 
 function Flickr(options) {
@@ -75,8 +80,9 @@ function Flickr(options) {
 }
 
 if (typeof window !== 'undefined') window.FlickrGal = {
-	init: function() {
-
+	init: function(searchTerm) {
+			this.albumCount = 0;
+			this.searchTerm = searchTerm;
 			this.albums = []; // Stores full album / photoset information
 			this.lightboxSet = []; // Stores the set of images open in lightbox
 			this.prevState = []; // Stores objects to be re-inserted later
@@ -265,6 +271,17 @@ function get_album_pos(id){
 	}
 	return position;
 }
+function get_album_id_by_search_term(searchTerm){
+	var searchTerm = searchTerm.replace(/["'?= ]*/gi, "").toLowerCase();
+	var id = "";
+	for (var album in FlickrGal.albums){
+		var albumName = FlickrGal.albums[album].title.replace(/["'?= ]*/gi, "").toLowerCase();
+		if (albumName.startsWith(searchTerm)) {
+			id = FlickrGal.albums[album].id;
+		}
+	}
+	return id;
+}
 function to_lower_case(array){
 	for(name in array){
 			array[name] = array[name].toString().toLowerCase();
@@ -355,11 +372,12 @@ function build_collections(data, options) {
 		// Request images for albums
 		Array.prototype.forEach.call(FlickrGal.albums, function(album) {
 			FlickrGal.gallery.makeApiRequest('photosets', album.id);
-		});
+		});        
 		// Initial gallery fade in
 		gallery.classList.remove('hide');
 };
 function insert_albums(data, id){
+	FlickrGal.albumCount++;
 	// Organise and push image data to albums array
 	var position = get_album_pos(id);
 	var allImages = data.photoset.photo;
@@ -386,6 +404,13 @@ function insert_albums(data, id){
 			fade_in_image(id, primaryImageUrl);
 		}
 	});
+
+	// code to start directly inside an album, but wait until all albums are loaded first
+	if (FlickrGal.albumCount === FlickrGal.albums.length && FlickrGal.searchTerm) {
+		var gotoAlbumId = get_album_id_by_search_term(FlickrGal.searchTerm);
+		if (gotoAlbumId)
+			insert_images(gotoAlbumId);
+	}
 }
 function insert_images(id){
 	gallery.imageGrid.innerHTML = "";

@@ -189,9 +189,14 @@ function handle_click(event){
 		case 'image':
 			var	requestedImage = el.id;
 			var album = el.getAttribute('album-id');
-			insert_lightbox(requestedImage, album);
-			lightbox.classList.remove('hide');
-			console.log('yip')
+			if (is_link(requestedImage, album)) {
+				redirect_to_link(requestedImage, album);
+				console.log('link');
+			} else {
+				insert_lightbox(requestedImage, album);
+				lightbox.classList.remove('hide');
+				console.log('lightbox:');
+			}
 			break;
 		case 'close':
 			lightbox.classList.add('hide');
@@ -467,4 +472,47 @@ function insert_lightbox(id, album){
 	lightbox.imageDesc.innerHTML = document.getElementById(FlickrGal.lightboxSet[0]).getAttribute('data-description');
 
 	document.getElementById(stageID).classList.remove('hide-stage-image');
+}
+
+function redirect_to_link(id, album){
+    var position = get_album_pos(album);
+	var callingAlbum = FlickrGal.albums[position].images;
+
+	lightbox.image.innerHTML = '';
+    var image = callingAlbum.find(image => {
+      return image.id === id
+    });
+    console.log("image description: " + image.description._content);
+    var link = image.description._content
+    .replace("<a href='", "")
+    .replace("<a href=\"", "")
+    .replace("<a href=", "")
+    .replace(/\" .*/i, "")
+    .replace(/' .*/i, "")
+    .replace(/ .*/i, "");
+    console.log("cleaned up link: " + link);
+    console.log("redirect...");
+    window.location.href = link;
+}
+
+function is_link(id, album)
+{
+    var position = get_album_pos(album);
+    var callingAlbum = FlickrGal.albums[position].images;
+
+    lightbox.image.innerHTML = '';
+    var image = callingAlbum.find(image => {
+      return image.id === id
+    });
+    
+    if (image.description._content.startsWith("<a href")
+        || image.description._content.startsWith("http")
+        || image.description._content.startsWith("www.")
+    )
+    {
+        return true;
+    }
+    else {
+        return false;
+    }
 }

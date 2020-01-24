@@ -124,10 +124,10 @@
     left: 0px;
     top: 0px;
     background-color: #000B10;
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    -o-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out; }
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out; }
     #flickrgal #lightbox #lightbox-ui {
       width: 100%;
       height: 100%;
@@ -254,7 +254,7 @@
         #flickrgal #lightbox #stage #image-box-container div {
           height: 100%;
           width: 100%;
-          padding: 20px 45px 75px 45px;
+          padding: 0px 0px 90px 0px;
           box-sizing: border-box; }
           #flickrgal #lightbox #stage #image-box-container div #image-box {
             width: 100%;

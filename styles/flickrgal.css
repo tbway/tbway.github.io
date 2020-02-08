@@ -34,6 +34,7 @@
       overflow: hidden;
       cursor: pointer;
       float: left;
+      filter: grayscale(75%);
       -webkit-transition: all 0.2s ease-out;
       -moz-transition: all 0.2s ease-out;
       -o-transition: all 0.2s ease-out;
@@ -123,7 +124,7 @@
     z-index: 13;
     left: 0px;
     top: 0px;
-    background-color: #000B10;
+    background-color: #FFFFFF;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
@@ -137,7 +138,7 @@
       z-index: 8;
       display: table; }
       #flickrgal #lightbox #lightbox-ui .close {
-        background-image: url("data:image/svg+xml,%3Csvg width='24px' height='24px' viewBox='0 0 12 12' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='Artboard' transform='translate(-74.000000, -62.000000)' fill='%23FFFFFF'%3E %3Cpolygon id='Combined-Shape' points='79.8131693 66.0863257 83.8994949 62 85.6263385 63.7268436 81.5400129 67.8131693 85.6263385 71.8994949 83.8994949 73.6263385 79.8131693 69.5400129 75.7268436 73.6263385 74 71.8994949 78.0863257 67.8131693 74 63.7268436 75.7268436 62'%3E%3C/polygon%3E %3C/g%3E %3C/g%3E %3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg width='24px' height='24px' viewBox='0 0 12 12' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='Artboard' transform='translate(-74.000000, -62.000000)' fill='%23000000'%3E %3Cpolygon id='Combined-Shape' points='79.8131693 66.0863257 83.8994949 62 85.6263385 63.7268436 81.5400129 67.8131693 85.6263385 71.8994949 83.8994949 73.6263385 79.8131693 69.5400129 75.7268436 73.6263385 74 71.8994949 78.0863257 67.8131693 74 63.7268436 75.7268436 62'%3E%3C/polygon%3E %3C/g%3E %3C/g%3E %3C/svg%3E");
         background-position: center center;
         background-repeat: no-repeat;
         width: 30px;
@@ -161,7 +162,7 @@
         vertical-align: middle; }
         #flickrgal #lightbox #lightbox-ui #controls #arrow-left,
         #flickrgal #lightbox #lightbox-ui #controls #arrow-right {
-          background-image: url("data:image/svg+xml,%3Csvg width='32px' height='32px' viewBox='0 0 13 21' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='Artboard' transform='translate(-45.000000, -35.000000)' fill='%23FFFFFF'%3E %3Cpolygon id='Combined-Shape' points='57.2071068 37.2071068 49 45.4142136 57.2071068 53.6213203 55.2071068 55.6213203 45 45.4142136 55.2071068 35.2071068'%3E%3C/polygon%3E %3C/g%3E %3C/g%3E %3C/svg%3E");
+          background-image: url("data:image/svg+xml,%3Csvg width='32px' height='32px' viewBox='0 0 13 21' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='Artboard' transform='translate(-45.000000, -35.000000)' fill='%23000000'%3E %3Cpolygon id='Combined-Shape' points='57.2071068 37.2071068 49 45.4142136 57.2071068 53.6213203 55.2071068 55.6213203 45 45.4142136 55.2071068 35.2071068'%3E%3C/polygon%3E %3C/g%3E %3C/g%3E %3C/svg%3E");
           background-position: left center;
           background-repeat: no-repeat;
           width: 40px;
@@ -197,12 +198,12 @@
         left: 0px;
         text-align: center;
         padding: 1rem 0 1.2rem 0;
-        background-color: #000B10;
+        background-color: #FFFFFF;
         z-index: 7; }
         #flickrgal #lightbox #lightbox-ui #info_container #info {
           padding: 0px 40px 0px 40px;
           display: inline-block;
-          color: #eee;
+          color: #000;
           font-size: 14pt;
           -webkit-transition: all 0.2s ease-out;
           -moz-transition: all 0.2s ease-out;
@@ -213,7 +214,7 @@
               padding: 0px 15px 0px 15px; } }
           #flickrgal #lightbox #lightbox-ui #info_container #info #title {
             font-size: 1.1rem;
-            color: #fff;
+            color: #000;
             display: inline-block;
             margin-bottom: 0.5rem;
             -webkit-transition: all 0.2s ease-out;
@@ -311,7 +312,7 @@
   height: 100%;
   display: block;
   border-radius: 50%;
-  border: 4px solid #eee;
+  border: 4px solid #000;
   box-sizing: border-box;
   clip-path: polygon(50% 0%, 100% 0%, 100% 50%, 50% 50%);
   animation-name: loading;

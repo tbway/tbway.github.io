@@ -34,7 +34,7 @@
       overflow: hidden;
       cursor: pointer;
       float: left;
-      filter: grayscale(75%);
+      filter: grayscale(100%);
       -webkit-transition: all 0.2s ease-out;
       -moz-transition: all 0.2s ease-out;
       -o-transition: all 0.2s ease-out;

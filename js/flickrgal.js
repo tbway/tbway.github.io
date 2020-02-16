@@ -49,7 +49,7 @@ function Flickr(options) {
 				endpoint += 'flickr.photosets.getPhotos'
 					+ '&photoset_id='
 					+ id
-					+ '&extras=description'
+					+ '&extras=description%2Curl_z%2Curl_c%2Curl_h%2Curl_k%2Curl_o'
 				break;
 		}
 
@@ -307,6 +307,13 @@ function build_image_url(image, size){
 				+ '_'
 				+ size
 				+ '.jpg';
+        if (size == 'h') {
+            url = image.urlH || build_image_url(image, 'b');
+        } else if (size == 'k') {
+            url = image.urlK || image.urlH || build_image_url(image, 'b');
+        } else if (size == 'o') {
+            url = image.urlO || image.urlK || image.urlH || build_image_url(image, 'b');
+        }
 	return url;
 }
 function build_album(collection, collectionName, collectionID, options) {
@@ -388,6 +395,11 @@ function insert_albums(data, id){
 		imageObject.farm = image.farm;
 		imageObject.server = image.server;
 		imageObject.secret = image.secret;
+		imageObject.urlZ = image.url_z;
+		imageObject.urlC = image.url_c;
+		imageObject.urlH = image.url_h;
+		imageObject.urlK = image.url_k;
+		imageObject.urlO = image.url_o;
 		imageObject.title = image.title;
 		imageObject.description = image.description;
 		imageObject.is_primary = image.isprimary;
@@ -455,7 +467,7 @@ function insert_lightbox(id, album){
 	Array.prototype.forEach.call(callingAlbum, function(image) {
 		var currentImage = document.getElementById(image.id);
 		var initialUrl = currentImage.style.backgroundImage;
-		var largeImageUrl = build_image_url(image, 'b');
+		var largeImageUrl = build_image_url(image, 'h');
 		var newImage = document.createElement('img');
 			newImage.id = 'stage-' + image.id;
 			newImage.classList.add('hide-stage-image');

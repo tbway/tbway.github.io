@@ -232,21 +232,25 @@ function handle_keys(event){
 //End Event Handlers
 function prev(){
 	var focus = document.getElementById(FlickrGal.lightboxSet[0]);
-	focus.classList.add('hide-stage-image');
+        focus.classList.add('hide-stage-image');
+        focus.classList.remove('active-stage-image');
 	var move = FlickrGal.lightboxSet.pop();
 	FlickrGal.lightboxSet.unshift(move);
 	focus = document.getElementById(FlickrGal.lightboxSet[0])
-	focus.classList.remove('hide-stage-image');
+        focus.classList.remove('hide-stage-image');
+        focus.classList.add('active-stage-image');    
 	lightbox.imageTitle.innerHTML = focus.getAttribute('data-title');
 	lightbox.imageDesc.innerHTML = focus.getAttribute('data-description');
 }
 function next(){
 	var focus = document.getElementById(FlickrGal.lightboxSet[0]);
 	focus.classList.add('hide-stage-image');
+        focus.classList.remove('active-stage-image');
 	var move = FlickrGal.lightboxSet.shift();
 	FlickrGal.lightboxSet.push(move);
 	focus = document.getElementById(FlickrGal.lightboxSet[0])
 	focus.classList.remove('hide-stage-image');
+        focus.classList.add('active-stage-image');    
 	lightbox.imageTitle.innerHTML = focus.getAttribute('data-title');
 	lightbox.imageDesc.innerHTML = focus.getAttribute('data-description');
 }
@@ -469,8 +473,11 @@ function insert_lightbox(id, album){
 		var initialUrl = currentImage.style.backgroundImage;
 		var largeImageUrl = build_image_url(image, 'h');
 		var newImage = document.createElement('img');
-			newImage.id = 'stage-' + image.id;
+
+
+	    newImage.id = 'stage-' + image.id;
 			newImage.classList.add('hide-stage-image');
+			newImage.classList.remove('active-stage-image');
 			newImage.style.backgroundImage = initialUrl;
 			newImage.style.backgroundSize = 'contain';
 			newImage.style.maxHeight = '100%';
@@ -496,6 +503,54 @@ function insert_lightbox(id, album){
 
 			lightbox.image.appendChild(newImage);
 			FlickrGal.lightboxSet.push(newImage.id);
+
+    var box2 = document.getElementById(newImage.id),
+    mouseisdown = false,
+    boxleft, // left position of moving box
+    startx, // starting x coordinate of touch point
+    dist = 0, // distance traveled by touch point
+    touchobj = null // Touch object holder
+ 
+    box2.addEventListener('touchstart', function(e){
+        touchobj = e.changedTouches[0] // reference first touch point
+        boxleft = parseInt(box2.style.left) // get left position of box
+        startx = parseInt(touchobj.clientX) // get x coord of touch point
+        e.preventDefault() // prevent default click behavior
+    }, false)
+ 
+    box2.addEventListener('touchmove', function(e){
+        touchobj = e.changedTouches[0] // reference first touch point for this event
+        var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
+        // move box according to starting pos plus dist
+        // with lower limit 0 and upper limit 380 so it doesn't move outside track:
+        box2.style.left = ( (boxleft + dist > 380)? 380 : (boxleft + dist < 0)? 0 : boxleft + dist ) + 'px'
+	lightbox.imageDesc.innerHTML = ( (boxleft + dist > 380)? 380 : (boxleft + dist < 0)? 0 : boxleft + dist ) + 'px'
+        e.preventDefault()
+    }, false)
+
+    box2.addEventListener('mousedown', function(e){
+        touchobj = e // reference first touch point
+        boxleft = parseInt(box2.style.left) // get left position of box
+        startx = parseInt(touchobj.clientX) // get x coord of touch point
+        e.preventDefault() // prevent default click behavior
+	mouseisdown = true
+    }, false)
+ 
+    box2.addEventListener('mousemove', function(e){
+        if (mouseisdown){
+          touchobj = e // reference first touch point for this event
+          var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
+          // move box according to starting pos plus dist
+          // with lower limit 0 and upper limit 380 so it doesn't move outside track:
+          box2.style.left = ( (boxleft + dist > 380)? 380 : (boxleft + dist < 0)? 0 : boxleft + dist ) + 'px'
+          e.preventDefault()
+      }
+    }, false)
+
+    box2.addEventListener('mouseup', function(e){
+	mouseisdown = false
+    }, false)
+
 	});
 
 	var activePos = FlickrGal.lightboxSet.indexOf(stageID);
@@ -509,6 +564,9 @@ function insert_lightbox(id, album){
 	lightbox.imageDesc.innerHTML = document.getElementById(FlickrGal.lightboxSet[0]).getAttribute('data-description');
 
 	document.getElementById(stageID).classList.remove('hide-stage-image');
+	document.getElementById(stageID).classList.add('active-stage-image');
+	    
+
 }
 
 function redirect_to_link(id, album){

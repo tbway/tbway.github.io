@@ -266,6 +266,12 @@
             height: 100%;
             position: relative;
             box-sizing: border-box; }
+            #flickrgal #lightbox #stage #image-box-container div #image-box img {
+              -webkit-transition: opacity 0.3s linear, visibility 0s linear, top 0s linear 0s;
+              -moz-transition: opacity 0.3s linear, visibility 0s linear, top 0s linear 0s;
+              -o-transition: opacity 0.3s linear, visibility 0s linear, top 0s linear 0s;
+              transition: opacity 0.3s linear, visibility 0s linear, top 0s linear 0s;
+            }
             #flickrgal #lightbox #stage #image-box-container div #image-box div {
               height: 100%;
               width: 100%;
@@ -286,6 +292,9 @@
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-size: contain; }
+              #flickrgal #lightbox #stage #image-box-container div #image-box .active-stage-image {
+		  opacity: 1.0;
+	      }
             #flickrgal #lightbox #stage #image-box-container div #image-box .hide-stage-image {
               top: 500%;
               visibility: hidden;

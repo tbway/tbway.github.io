@@ -521,13 +521,28 @@ function insert_lightbox(id, album){
 	box2.addEventListener('touchmove', function(e){
             touchobj = e.changedTouches[0] // reference first touch point for this event
             var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
-            // move box according to starting pos plus dist
-            // with lower limit 0 and upper limit 380 so it doesn't move outside track:
-            box2.style.left = ( (boxleft + dist > 380)? 380 : (boxleft + dist < 0)? 0 : boxleft + dist ) + 'px'
-	    lightbox.imageDesc.innerHTML = ( (boxleft + dist > 380)? 380 : (boxleft + dist < 0)? 0 : boxleft + dist ) + 'px'
+	    var limit = window.innerWidth/2;
+	    box2.style.left = boxleft + dist + 'px'
+	    if (Math.abs(dist) / limit < 0.5) box2.style.opacity = 0.5;
+	    lightbox.imageDesc.innerHTML = dist + ', ' + boxleft + ', ' + (boxleft + dist) + ', ' + box2.style.opacity;
             e.preventDefault()
 	}, false)
 
+	box2.addEventListener('touchend', function(e){
+            touchobj = e.changedTouches[0] // reference first touch point for this event
+	    var limit = window.innerWidth/2;
+            var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
+	    if (Math.abs(dist) < limit) {
+		box2.style.left=boxleft;
+		box2.style.opacity = 1.0;
+	    } else {
+		next();
+		box2.style.left=boxleft;
+		box2.style.opacity = null;
+	    }
+            e.preventDefault() // prevent default click behavior
+	}, false)
+	
 	box2.addEventListener('mousedown', function(e){
             touchobj = e // reference first touch point
             boxleft = parseInt(box2.style.left) // get left position of box
@@ -540,14 +555,25 @@ function insert_lightbox(id, album){
             if (mouseisdown){
 		touchobj = e // reference first touch point for this event
 		var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
-		// move box according to starting pos plus dist
-		// with lower limit 0 and upper limit 380 so it doesn't move outside track:
-		box2.style.left = ( (boxleft + dist > 380)? 380 : (boxleft + dist < 0)? 0 : boxleft + dist ) + 'px'
+		var limit = window.innerWidth/2;
+		box2.style.left = boxleft + dist + 'px'
+		if (Math.abs(dist) / limit < 0.5) box2.style.opacity = 0.5;
+		lightbox.imageDesc.innerHTML = dist + ', ' + boxleft + ', ' + (boxleft + dist) + ', ' + box2.style.opacity;
 		e.preventDefault()
 	    }
 	}, false)
 
 	box2.addEventListener('mouseup', function(e){
+	    var limit = window.innerWidth/2;
+            var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
+	    if (Math.abs(dist) < limit) {
+		box2.style.left=boxleft;
+		box2.style.opacity = 1.0;
+	    } else {
+		next();
+		box2.style.left=boxleft;
+		box2.style.opacity = null;
+	    }
 	    mouseisdown = false
 	}, false)
 

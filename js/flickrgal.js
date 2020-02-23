@@ -536,7 +536,11 @@ function insert_lightbox(id, album){
 		box2.style.left=boxleft;
 		box2.style.opacity = 1.0;
 	    } else {
-		next();
+		if (dist > 0) {
+		    next();
+		} else if (dist < 0) {
+		    prev();
+		}
 		box2.style.left=boxleft;
 		box2.style.opacity = null;
 	    }
@@ -570,7 +574,11 @@ function insert_lightbox(id, album){
 		box2.style.left=boxleft;
 		box2.style.opacity = 1.0;
 	    } else {
-		next();
+		if (dist > 0) {
+		    next();
+		} else if (dist < 0) {
+		    prev();
+		}
 		box2.style.left=boxleft;
 		box2.style.opacity = null;
 	    }

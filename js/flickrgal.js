@@ -525,7 +525,7 @@ function insert_lightbox(id, album){
 	    var limit = 150;
 	    box2.style.left = boxleft + dist + 'px'
 	    if (Math.abs(dist) / limit > 1) box2.style.opacity = 0.5;
-	    lightbox.imageDesc.innerHTML = dist + ', ' + boxleft + ', ' + (boxleft + dist) + ', ' + box2.style.opacity;
+	    //lightbox.imageDesc.innerHTML = dist + ', ' + boxleft + ', ' + (boxleft + dist) + ', ' + box2.style.opacity;
 	    //e.preventDefault()
 	}, false)
 

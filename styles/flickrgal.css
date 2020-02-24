@@ -136,6 +136,7 @@
       top: 0px;
       left: 0px;
       z-index: 8;
+      pointer-events: none;
       display: table; }
       #flickrgal #lightbox #lightbox-ui .close {
         background-image: url("data:image/svg+xml,%3Csvg width='24px' height='24px' viewBox='0 0 12 12' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='Artboard' transform='translate(-74.000000, -62.000000)' fill='%23000000'%3E %3Cpolygon id='Combined-Shape' points='79.8131693 66.0863257 83.8994949 62 85.6263385 63.7268436 81.5400129 67.8131693 85.6263385 71.8994949 83.8994949 73.6263385 79.8131693 69.5400129 75.7268436 73.6263385 74 71.8994949 78.0863257 67.8131693 74 63.7268436 75.7268436 62'%3E%3C/polygon%3E %3C/g%3E %3C/g%3E %3C/svg%3E");
@@ -149,6 +150,7 @@
         right: 0px;
         opacity: 0.5;
         cursor: pointer;
+	pointer-events: auto;
         -webkit-transition: all 0.2s ease-out;
         -moz-transition: all 0.2s ease-out;
         -o-transition: all 0.2s ease-out;
@@ -159,6 +161,7 @@
         width: 100%;
         height: 100%;
         display: table-cell;
+        pointer-events: none;
         vertical-align: middle; }
         #flickrgal #lightbox #lightbox-ui #controls #arrow-left,
         #flickrgal #lightbox #lightbox-ui #controls #arrow-right {
@@ -171,6 +174,7 @@
           margin-left: -1px;
           cursor: pointer;
           opacity: 0.5;
+          pointer-events: auto;
           -webkit-transition: all 0.2s ease-out;
           -moz-transition: all 0.2s ease-out;
           -o-transition: all 0.2s ease-out;
@@ -262,6 +266,12 @@
             height: 100%;
             position: relative;
             box-sizing: border-box; }
+            #flickrgal #lightbox #stage #image-box-container div #image-box img {
+              -webkit-transition: opacity 0.3s linear, visibility 0s linear, top 0s linear 0s;
+              -moz-transition: opacity 0.3s linear, visibility 0s linear, top 0s linear 0s;
+              -o-transition: opacity 0.3s linear, visibility 0s linear, top 0s linear 0s;
+              transition: opacity 0.3s linear, visibility 0s linear, top 0s linear 0s;
+            }
             #flickrgal #lightbox #stage #image-box-container div #image-box div {
               height: 100%;
               width: 100%;
@@ -282,6 +292,9 @@
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-size: contain; }
+              #flickrgal #lightbox #stage #image-box-container div #image-box .active-stage-image {
+		  opacity: 1.0;
+	      }
             #flickrgal #lightbox #stage #image-box-container div #image-box .hide-stage-image {
               top: 500%;
               visibility: hidden;

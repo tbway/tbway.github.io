@@ -515,25 +515,27 @@ function insert_lightbox(id, album){
             touchobj = e.changedTouches[0] // reference first touch point
             boxleft = parseInt(box2.style.left) // get left position of box
             startx = parseInt(touchobj.clientX) // get x coord of touch point
-            e.preventDefault() // prevent default click behavior
+	    //e.preventDefault() // prevent default click behavior
 	}, false)
 	
 	box2.addEventListener('touchmove', function(e){
             touchobj = e.changedTouches[0] // reference first touch point for this event
             var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
-	    var limit = window.innerWidth/2;
+	    //var limit = window.innerWidth/2;
+	    var limit = 150;
 	    box2.style.left = boxleft + dist + 'px'
-	    if (Math.abs(dist) / limit < 0.5) box2.style.opacity = 0.5;
+	    if (Math.abs(dist) / limit > 1) box2.style.opacity = 0.5;
 	    lightbox.imageDesc.innerHTML = dist + ', ' + boxleft + ', ' + (boxleft + dist) + ', ' + box2.style.opacity;
-            e.preventDefault()
+	    //e.preventDefault()
 	}, false)
 
 	box2.addEventListener('touchend', function(e){
             touchobj = e.changedTouches[0] // reference first touch point for this event
-	    var limit = window.innerWidth/2;
+	    //var limit = window.innerWidth/2;
+	    var limit = 150;
             var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
 	    if (Math.abs(dist) < limit) {
-		box2.style.left=boxleft;
+		box2.style.left=0;
 		box2.style.opacity = 1.0;
 	    } else {
 		if (dist > 0) {
@@ -541,50 +543,51 @@ function insert_lightbox(id, album){
 		} else if (dist < 0) {
 		    prev();
 		}
-		box2.style.left=boxleft;
+		box2.style.left=0;
 		box2.style.opacity = null;
 	    }
-            e.preventDefault() // prevent default click behavior
+	    //e.preventDefault() // prevent default click behavior
 	}, false)
 	
-	box2.addEventListener('mousedown', function(e){
-            touchobj = e // reference first touch point
-            boxleft = parseInt(box2.style.left) // get left position of box
-            startx = parseInt(touchobj.clientX) // get x coord of touch point
-            e.preventDefault() // prevent default click behavior
-	    mouseisdown = true
-	}, false)
-	
-	box2.addEventListener('mousemove', function(e){
-            if (mouseisdown){
-		touchobj = e // reference first touch point for this event
-		var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
-		var limit = window.innerWidth/2;
-		box2.style.left = boxleft + dist + 'px'
-		if (Math.abs(dist) / limit < 0.5) box2.style.opacity = 0.5;
-		lightbox.imageDesc.innerHTML = dist + ', ' + boxleft + ', ' + (boxleft + dist) + ', ' + box2.style.opacity;
-		e.preventDefault()
-	    }
-	}, false)
+	/*
+	  box2.addEventListener('mousedown', function(e){
+          touchobj = e // reference first touch point
+          boxleft = parseInt(box2.style.left) // get left position of box
+          startx = parseInt(touchobj.clientX) // get x coord of touch point
+          e.preventDefault() // prevent default click behavior
+	  mouseisdown = true
+	  }, false)
+	  
+	  box2.addEventListener('mousemove', function(e){
+          if (mouseisdown){
+	  touchobj = e // reference first touch point for this event
+	  var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
+	  var limit = window.innerWidth/2;
+	  box2.style.left = boxleft + dist + 'px'
+	  if (Math.abs(dist) / limit > 0.5) box2.style.opacity = 0.5;
+	  lightbox.imageDesc.innerHTML = dist + ', ' + boxleft + ', ' + (boxleft + dist) + ', ' + box2.style.opacity;
+	  e.preventDefault()
+	  }
+	  }, false)
 
-	box2.addEventListener('mouseup', function(e){
-	    var limit = window.innerWidth/2;
-            var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
-	    if (Math.abs(dist) < limit) {
-		box2.style.left=boxleft;
-		box2.style.opacity = 1.0;
-	    } else {
-		if (dist > 0) {
-		    next();
-		} else if (dist < 0) {
-		    prev();
-		}
-		box2.style.left=boxleft;
-		box2.style.opacity = null;
-	    }
-	    mouseisdown = false
-	}, false)
-
+	  box2.addEventListener('mouseup', function(e){
+	  var limit = window.innerWidth/2;
+          var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
+	  if (Math.abs(dist) < limit) {
+	  box2.style.left=boxleft;
+	  box2.style.opacity = 1.0;
+	  } else {
+	  if (dist > 0) {
+	  next();
+	  } else if (dist < 0) {
+	  prev();
+	  }
+	  box2.style.left=boxleft;
+	  box2.style.opacity = null;
+	  }
+	  mouseisdown = false
+	  }, false)
+	*/
     });
 
     var activePos = FlickrGal.lightboxSet.indexOf(stageID);

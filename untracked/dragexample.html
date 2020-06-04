@@ -1,0 +1,70 @@
+<html>
+  <head>
+  </head>
+    <body>
+
+<script>
+ 
+window.addEventListener('load', function(){
+ 
+    var box2 = document.getElementById('box2'),
+    mouseisdown = false,
+    boxleft, // left position of moving box
+    startx, // starting x coordinate of touch point
+    dist = 0, // distance traveled by touch point
+    touchobj = null // Touch object holder
+ 
+    box2.addEventListener('touchstart', function(e){
+        touchobj = e.changedTouches[0] // reference first touch point
+        boxleft = parseInt(box2.style.left) // get left position of box
+        startx = parseInt(touchobj.clientX) // get x coord of touch point
+        e.preventDefault() // prevent default click behavior
+    }, false)
+ 
+    box2.addEventListener('touchmove', function(e){
+        touchobj = e.changedTouches[0] // reference first touch point for this event
+        var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
+        // move box according to starting pos plus dist
+        // with lower limit 0 and upper limit 380 so it doesn't move outside track:
+        box2.style.left = ( (boxleft + dist > 380)? 380 : (boxleft + dist < 0)? 0 : boxleft + dist ) + 'px'
+        e.preventDefault()
+    }, false)
+ 
+
+    box2.addEventListener('mousedown', function(e){
+        touchobj = e // reference first touch point
+        boxleft = parseInt(box2.style.left) // get left position of box
+        startx = parseInt(touchobj.clientX) // get x coord of touch point
+        e.preventDefault() // prevent default click behavior
+	mouseisdown = true
+    }, false)
+ 
+    box2.addEventListener('mousemove', function(e){
+        if (mouseisdown){
+          touchobj = e // reference first touch point for this event
+          var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
+          // move box according to starting pos plus dist
+          // with lower limit 0 and upper limit 380 so it doesn't move outside track:
+          box2.style.left = ( (boxleft + dist > 380)? 380 : (boxleft + dist < 0)? 0 : boxleft + dist ) + 'px'
+          e.preventDefault()
+      }
+    }, false)
+
+    box2.addEventListener('mouseup', function(e){
+	mouseisdown = false
+    }, false)
+
+    
+ 
+}, false)
+ 
+</script>
+
+<div style="float: left; width: 100%">
+<div id="track" style="width: 480px; height: 55px; position: relative; overflow: visible; font-size: 90%;line-height: 2; color: black">
+<div id="box2" style="left:0; top:0; width: 100px; height: 50px; font-size: 2em; border: 1px solid orange; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; background: lightyellow; position: absolute; padding-top: 10px; -moz-box-shadow: 0 0 5px gray; box-shadow: 0 0 5px gray; text-align: center; line-height: 1;">Drag</div>
+</div>
+</div>
+      
+    </body>
+</html>

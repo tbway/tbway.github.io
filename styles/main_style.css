@@ -28,8 +28,8 @@
  .banner-wrap .container { padding: 80px 40px; }
  .banner-wrap .banner { text-align: center; -webkit-transition: opacity 500ms ease; -moz-transition: opacity 500ms ease; -ms-transition: opacity 500ms ease; transition: opacity 500ms ease; }
  .banner-wrap h2 { color: inherit; font-family: 'Birdseye', sans-serif; font-size: 80px; font-weight: 100; line-height: 1.15; margin: 15px auto; }
- .banner-wrap div.paragraph { color: inherit; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; line-height: 1.15; letter-spacing: 0.15em; margin: 15px auto; }
- .banner-wrap p { color: inherit; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; line-height: 1.15; letter-spacing: 0.15em; margin: 15px auto; }
+ .banner-wrap div.paragraph { color: inherit; font-family: 'Open Sans', sans-serif; font-size: 12px; font-weight: 700; line-height: 1.15; letter-spacing: 0.15em; margin: 15px auto; }
+ .banner-wrap p { color: inherit; font-family: 'Open Sans', sans-serif; font-size: 12px; font-weight: 700; line-height: 1.15; letter-spacing: 0.15em; margin: 15px auto; }
  .container, .wsite-footer { position: relative; width: 100%; margin: 0 auto; box-sizing: border-box; }
  .main-wrap { width: 100%; background: #ffffff; }
  .main-wrap .container { padding: 60px 40px; }
@@ -50,12 +50,12 @@
  .birdseye-header .logo * { display: block; }
  .birdseye-header .logo a { margin-right: 30px; -webkit-transition: opacity 200ms ease; -moz-transition: opacity 200ms ease; -ms-transition: opacity 200ms ease; transition: opacity 200ms ease; }
  .birdseye-header .logo a:hover { opacity: .6; }
- .birdseye-header .logo #wsite-title { max-width: 400px; font-family: 'Montserrat', sans-serif; font-size: 30px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 0.03em; -webkit-transition: font-size 260ms ease; -moz-transition: font-size 260ms ease; -ms-transition: font-size 260ms ease; transition: font-size 260ms ease; }
+ .birdseye-header .logo #wsite-title { max-width: 400px; font-family: 'Open Sans', sans-serif; font-size: 30px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 0.03em; -webkit-transition: font-size 260ms ease; -moz-transition: font-size 260ms ease; -ms-transition: font-size 260ms ease; transition: font-size 260ms ease; }
  .birdseye-header .logo img { overflow: hidden; max-width: 200px; max-height: 40px; }
  .nav { display: table-cell; vertical-align: middle; }
  .nav ul { float: right; max-width: calc(100vw - 480px); overflow: hidden; }
  .nav li { display: inline-block; margin: 5px 5px 5px 0; }
- .nav .wsite-menu-item { display: block; padding: 12px 20px; border: 1px solid transparent; font-family: 'Montserrat', sans-serif; font-size: 19px; font-weight: 500; line-height: 1; letter-spacing: 0.05em; text-transform: uppercase; -webkit-transition: opacity 300ms ease; -moz-transition: opacity 300ms ease; -ms-transition: opacity 300ms ease; transition: opacity 300ms ease; }
+ .nav .wsite-menu-item { display: block; padding: 12px 20px; border: 1px solid transparent; font-family: 'Open Sans', sans-serif; font-size: 19px; font-weight: 500; line-height: 1; letter-spacing: 0.05em; text-transform: none; -webkit-transition: opacity 300ms ease; -moz-transition: opacity 300ms ease; -ms-transition: opacity 300ms ease; transition: opacity 300ms ease; }
  .nav li:not(.wsite-nav-cart)#active > .wsite-menu-item { border-color: inherit; }
  .nav li .wsite-menu-item:hover { opacity: 0.6; }
  .nav #wsite-nav-cart-a { padding-right: 0; }
@@ -63,7 +63,7 @@
  .mobile-nav { display: none; }
  #wsite-menus > .wsite-menu-wrap > .wsite-menu .wsite-menu { margin: 0 -1px; }
  #wsite-menus .wsite-menu { position: relative; background: #ffffff; -webkit-box-shadow: inset 0px 0px 0px 1px #000000; -moz-box-shadow: inset 0px 0px 0px 1px #000000; -ms-box-shadow: inset 0px 0px 0px 1px #000000; box-shadow: inset 0px 0px 0px 1px #000000; }
- #wsite-menus .wsite-menu li a { background: transparent; color: #000000; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: normal; line-height: normal; text-transform: uppercase; letter-spacing: 0.05em; border: none; }
+ #wsite-menus .wsite-menu li a { background: transparent; color: #000000; font-family: 'Open Sans', sans-serif; font-size: 12px; font-weight: normal; line-height: normal; text-transform: uppercase; letter-spacing: 0.05em; border: none; }
  #wsite-menus .wsite-menu li a:hover { background: rgba(0,0,0,0.05); -webkit-transition: opacity 200ms ease; -moz-transition: opacity 200ms ease; -ms-transition: opacity 200ms ease; transition: opacity 200ms ease; }
  #wsite-menus .wsite-menu-arrow { display: none; }
  body.affix .birdseye-header { position: fixed; -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.05); -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.05); -ms-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.05); box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.05); padding: 10px 40px; }
@@ -84,7 +84,7 @@
  body.splash-page .birdseye-header { top: calc(50% - 132px); padding: 40px 80px; background: #ffffff; color: #000000; border-color: #000000; }
  body.splash-page .birdseye-header .container { height: 185px; max-height: none; }
  body.splash-page .birdseye-header .logo #wsite-title { font-size: 50px; }
- body.splash-page .birdseye-header .wsite-phone { font-family: 'Montserrat', sans-serif; font-size: 14px; color: rgba(0,0,0,0.6); padding-top: 20px; }
+ body.splash-page .birdseye-header .wsite-phone { font-family: 'Open Sans', sans-serif; font-size: 14px; color: rgba(0,0,0,0.6); padding-top: 20px; }
  body.splash-page .birdseye-header .nav .wsite-menu-item { font-size: 14px; }
  body.splash-page .birdseye-header li#active > .wsite-menu-item { border-color: transparent; }
  body.splash-page .birdseye-header .nav #wsite-nav-cart-num { background: #000000; color: #ffffff; }
@@ -94,7 +94,7 @@
  body:not(.wsite-editor) .logo, body:not(.wsite-editor) .desktop-nav { opacity: 0; -webkit-transition: opacity 600ms ease-in 300ms; -moz-transition: opacity 600ms ease-in 300ms; -ms-transition: opacity 600ms ease-in 300ms; transition: opacity 600ms ease-in 300ms; }
  body:not(.wsite-editor).fade-in .logo, body:not(.wsite-editor).fade-in .desktop-nav { opacity: 1; }
  ::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder { color: rgba(0,0,0,0.4); }
- .wsite-form-field .wsite-form-input, .wsite-form-field .wsite-search-element-input, .wsite-form-field .form-select, .wsite-form-field .wsite-form-field select, .wsite-form-field .wsite-com-product-option-groups select, .wsite-form-field .form-radio-container, .wsite-form-field input[type='radio'], .wsite-form-field input[type='checkbox'], .wsite-com-product-option-groups .wsite-form-input, .wsite-com-product-option-groups .wsite-search-element-input, .wsite-com-product-option-groups .form-select, .wsite-com-product-option-groups .wsite-form-field select, .wsite-com-product-option-groups .wsite-com-product-option-groups select, .wsite-com-product-option-groups .form-radio-container, .wsite-com-product-option-groups input[type='radio'], .wsite-com-product-option-groups input[type='checkbox'] { color: #000000; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: normal; line-height: 1; border-radius: 0; -webkit-transition: all 300ms ease; -moz-transition: all 300ms ease; -ms-transition: all 300ms ease; transition: all 300ms ease; }
+ .wsite-form-field .wsite-form-input, .wsite-form-field .wsite-search-element-input, .wsite-form-field .form-select, .wsite-form-field .wsite-form-field select, .wsite-form-field .wsite-com-product-option-groups select, .wsite-form-field .form-radio-container, .wsite-form-field input[type='radio'], .wsite-form-field input[type='checkbox'], .wsite-com-product-option-groups .wsite-form-input, .wsite-com-product-option-groups .wsite-search-element-input, .wsite-com-product-option-groups .form-select, .wsite-com-product-option-groups .wsite-form-field select, .wsite-com-product-option-groups .wsite-com-product-option-groups select, .wsite-com-product-option-groups .form-radio-container, .wsite-com-product-option-groups input[type='radio'], .wsite-com-product-option-groups input[type='checkbox'] { color: #000000; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: normal; line-height: 1; border-radius: 0; -webkit-transition: all 300ms ease; -moz-transition: all 300ms ease; -ms-transition: all 300ms ease; transition: all 300ms ease; }
  .wsite-form-input, .wsite-search-element-input, .form-select, .wsite-form-field select, .wsite-com-product-option-groups select { height: auto; max-width: 370px; padding: 10px 20px !important; margin-bottom: 10px; background: transparent; border: 1px solid rgba(0,0,0,0.4); }
  .wsite-form-input:hover, .wsite-form-input:focus, .wsite-form-input--focus, .wsite-search-element-input:hover, .wsite-search-element-input:focus, .form-select:hover, .form-select:focus, .wsite-form-field select:hover, .wsite-form-field select:focus, .wsite-com-product-option-groups select:hover, .wsite-com-product-option-groups select:focus { background-color: rgba(0,0,0,0.05); border-color: #000000; }
  .form-select, .wsite-form-field select, .wsite-com-product-option-groups select { text-indent: 0.01px; text-overflow: ''; height: 40px; background: transparent url(theme/images/select-dropdown.svg?1546184476) 97% center no-repeat; }
@@ -108,7 +108,7 @@
  .wsite-form-field input[type='checkbox']:checked:after, .wsite-com-product-option-groups input[type='checkbox']:checked:after { display: block; content: ' '; }
  .wsite-search-element { margin-bottom: 10px; }
  .wsite-search-element .wsite-search-element-input { margin-bottom: 0; }
- .wsite-form-label { display: inline-block; padding: 0; color: #000000; font-family: 'Montserrat', sans-serif; font-size: 12px; text-transform: uppercase; font-weight: normal; line-height: 1; margin-bottom: 10px; }
+ .wsite-form-label { display: inline-block; padding: 0; color: #000000; font-family: 'Open Sans', sans-serif; font-size: 12px; text-transform: uppercase; font-weight: normal; line-height: 1; margin-bottom: 10px; }
  .wsite-form-sublabel { display: none; }
  .wsite-form-radio-container { margin-bottom: 15px; }
  .formlist, .wsite-editor .formlist { min-height: inherit; }
@@ -116,7 +116,7 @@
  .form-field-error .wsite-form-radio-container { border: none; }
  .wsite-button { display: inline-block; height: auto; padding: 0; background-image: none !important; background-color: transparent; color: #000000 !important; border: 1px solid #000000 !important; -webkit-transition: all 100ms ease-in-out; -moz-transition: all 100ms ease-in-out; -ms-transition: all 100ms ease-in-out; transition: all 100ms ease-in-out; }
  .wsite-button:hover { background-color: rgba(0,0,0,0.05); }
- .wsite-button .wsite-button-inner { display: inline-block; height: auto; padding: 14px 30px; background: transparent; background-image: none !important; color: inherit !important; letter-spacing: 0.03em; font-family: 'Montserrat', sans-serif; font-size: 12px; line-height: 1; text-transform: uppercase; }
+ .wsite-button .wsite-button-inner { display: inline-block; height: auto; padding: 14px 30px; background: transparent; background-image: none !important; color: inherit !important; letter-spacing: 0.03em; font-family: 'Open Sans', sans-serif; font-size: 12px; line-height: 1; text-transform: uppercase; }
  .wsite-button-large { color: #ffffff !important; border: 1px solid #ffffff !important; }
  .wsite-button-large:hover { background-color: rgba(255,255,255,0.2) !important; }
  .wsite-button-highlight, #wsite-com-product-add-to-cart.wsite-button-highlight { background-color: #000000 !important; color: #ffffff !important; border: 1px solid #000000 !important; }
@@ -168,13 +168,13 @@
  #wsite-mini-cart .wsite-items-right { width: 22%; }
  #wsite-mini-cart .wsite-items-quantity { width: 10%; text-align: center; }
  #wsite-mini-cart .wsite-vertical-align { padding-top: 10px; padding-bottom: 10px; vertical-align: top; }
- #wsite-mini-cart .wsite-product-list .wsite-product-price, #wsite-mini-cart .wsite-items-quantity, #wsite-mini-cart .wsite-name-header, #wsite-mini-cart .wsite-subtotal-wrapper, #wsite-mini-cart .wsite-subtotal-wrapper * { color: #000000; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; line-height: 1.25; }
+ #wsite-mini-cart .wsite-product-list .wsite-product-price, #wsite-mini-cart .wsite-items-quantity, #wsite-mini-cart .wsite-name-header, #wsite-mini-cart .wsite-subtotal-wrapper, #wsite-mini-cart .wsite-subtotal-wrapper * { color: #000000; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; line-height: 1.25; }
  #wsite-mini-cart .wsite-product-list .wsite-product-price { padding-right: 0; }
  #wsite-mini-cart .wsite-product-option { font-family: 'Birdseye', sans-serif; font-size: 12px; font-weight: 500; }
  #wsite-mini-cart .wsite-subtotal-wrapper { vertical-align: middle; }
- #wsite-mini-cart .wsite-subtotal-wrapper span { font-family: 'Montserrat', sans-serif; font-size: 13px !important; margin-right: 5px; }
+ #wsite-mini-cart .wsite-subtotal-wrapper span { font-family: 'Open Sans', sans-serif; font-size: 13px !important; margin-right: 5px; }
  #wsite-mini-cart .wsite-subtotal-wrapper span.wsite-price { font-size: 14px !important; font-weight: 900; }
- #wsite-mini-cart .wsite-remove-button { background: none !important; font-family: 'Montserrat', sans-serif; height: auto; width: 100%; clear: both; float: none; cursor: pointer; color: #DD5857; font-size: 12px; text-align: right; margin-top: 0; margin-right: 0; }
+ #wsite-mini-cart .wsite-remove-button { background: none !important; font-family: 'Open Sans', sans-serif; height: auto; width: 100%; clear: both; float: none; cursor: pointer; color: #DD5857; font-size: 12px; text-align: right; margin-top: 0; margin-right: 0; }
  #blogTable .blog-post .blog-header h2.blog-title { font-size: 20px; font-weight: 500; margin-bottom: 10px !important; }
  #blogTable .blog-post .blog-separator { margin: 0 auto 30px; border: none; }
  #blogTable .blog-sidebar { width: 250px; }
@@ -189,7 +189,7 @@
  #blogTable .blogCommentWrap .blogCommentAuthor span.name, #blogTable .blogCommentWrap .blogCommentAuthor span.email { color: #000000 !important; float: none; line-height: 1; }
  #blogTable .blogCommentWrap .blogCommentHeading { padding: 0; margin-bottom: 20px; }
  #blogTable .blogCommentWrap .blogCommentHeading .blogCommentHeadingInner { height: auto; }
- #blogTable .blogCommentWrap .blogCommentHeading .blogCommentAuthor, #blogTable .blogCommentWrap .blogCommentHeading .blogCommentDate { float: none; text-align: left; height: auto; font-family: 'Montserrat', sans-serif; font-weight: normal; line-height: 1; letter-spacing: 0.03em; padding: 0; }
+ #blogTable .blogCommentWrap .blogCommentHeading .blogCommentAuthor, #blogTable .blogCommentWrap .blogCommentHeading .blogCommentDate { float: none; text-align: left; height: auto; font-family: 'Open Sans', sans-serif; font-weight: normal; line-height: 1; letter-spacing: 0.03em; padding: 0; }
  #blogTable .blogCommentWrap .blogCommentHeading .blogCommentAuthor { text-transform: uppercase; }
  #blogTable .blogCommentWrap .blogCommentHeading .blogCommentDate { color: #333; }
  #blogTable .blogCommentWrap .blogCommentText { padding: 0; }
@@ -199,7 +199,7 @@
  #commentPostDiv .field input[type=text], #commentPostDiv .field textarea { height: auto; padding: 8px 12px; background: transparent; box-sizing: border-box; -webkit-transition: all 300ms ease; -moz-transition: all 300ms ease; -ms-transition: all 300ms ease; transition: all 300ms ease; }
  #commentPostDiv .field input[type=text]:focus, #commentPostDiv .field textarea:focus { background-color: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.4); }
  .blogCommentSubreplyWrapper div.iframeWrapper { background: none; border: none; }
- .blog-button { height: auto; padding: 10px 20px; background-image: none; background-color: rgba(0,0,0,0.6); color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 12px; line-height: 1; text-transform: uppercase; -webkit-transition: all 300ms ease; -moz-transition: all 300ms ease; -ms-transition: all 300ms ease; transition: all 300ms ease; }
+ .blog-button { height: auto; padding: 10px 20px; background-image: none; background-color: rgba(0,0,0,0.6); color: #ffffff; font-family: 'Open Sans', sans-serif; font-size: 12px; line-height: 1; text-transform: uppercase; -webkit-transition: all 300ms ease; -moz-transition: all 300ms ease; -ms-transition: all 300ms ease; transition: all 300ms ease; }
  .blog-button:hover { background-color: rgba(0,0,0,0.2); }
  .blog-button span { background: none; }
  @media screen and (max-width: 992px) {
